@@ -12,7 +12,7 @@ int main()
     while (cin >> n >> s)
     {
         m.clear();
-        for(int i=0; i< s.size()-n+1; i++)
+        for(size_t i=0; i< s.size()-n+1; i++)
         {
             str temp = s.substr(i, n);
 
