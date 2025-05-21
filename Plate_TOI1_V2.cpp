@@ -43,7 +43,7 @@ int main()
             {
                 if (p == cc)
                 {
-                    isIn == true;
+                    isIn = true;
                     break;
                 }
             }
