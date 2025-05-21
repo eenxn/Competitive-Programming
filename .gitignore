@@ -1,5 +1,3 @@
-.
-./a.out
-./output
-./Makefile
-./vscode
+output/
+output/*
+a.out
