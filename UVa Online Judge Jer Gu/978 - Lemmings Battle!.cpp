@@ -28,80 +28,22 @@ int main()
             blue.push(t);
         }
 
-        vector<int> gw;
-        vector<int> bw;
-        while(b--)
-        {
-            int g_temp, b_temp;
-            g_temp = green.top();
-            b_temp = blue.top();
-            green.pop();
-            blue.pop();
 
-            if(g_temp > b_temp)
-            {
-                gw.push_back(g_temp-b_temp);
-            }
-            else if(g_temp < b_temp)
-            {
-                bw.push_back(b_temp-g_temp);
-            }
-        }
-        for(auto &i: gw)
+        while (!green.empty() && !blue.empty())
         {
-            green.push(i);
-        }
-        for(auto &i: bw)
-        {
-            blue.push(i);
-        }
+            int battle = min(b, (int)min(green.size(), blue.size()));
+            vector<int> g_temp, b_temp;
 
-        if(!green.empty() && !blue.empty())
-        {
-            if(green.size() < blue.size())
+            for(int i=0; i<battle; i++)
             {
-                int s;
-                s = green.size();
-                while(s--)
-                {
-                    int g_temp, b_temp;
-                    g_temp = green.top();
-                    b_temp = blue.top();
-                    green.pop();
-                    blue.pop();
-
-                    if(g_temp > b_temp)
-                    {
-                        gw.push_back(g_temp-b_temp);
-                    }
-                    else if(g_temp < b_temp)
-                    {
-                        bw.push_back(b_temp-g_temp);
-                    }
-                }
+                g_temp.emplace_back(green.top()); green.pop();
+                b_temp.emplace_back(blue.top()); blue.pop();
             }
 
-            else
+            for(int i=0; i<battle; i++)
             {
-                int s;
-                s = blue.size();
-                while(s--)
-                {
-                    int g_temp, b_temp;
-                    g_temp = green.top();
-                    b_temp = blue.top();
-                    green.pop();
-                    blue.pop();
-
-                    if(g_temp > b_temp)
-                    {
-                        gw.push_back(g_temp-b_temp);
-                    }
-                    else if(g_temp < b_temp)
-                    {
-                        bw.push_back(b_temp-g_temp);
-                    }
-                }
+                if(g_temp[i] > b_temp[i]) {green.push(g_temp[i]-b_temp[i]);}
+                else if(b_temp[i] > g_temp[i]) {blue.push(b_temp[i]-g_temp[i]);}
             }
         }
         
@@ -131,7 +73,7 @@ int main()
             }
         }
 
-        cout << '\n';
+        if (n) {cout << '\n';}
     }
 
     return (0);
