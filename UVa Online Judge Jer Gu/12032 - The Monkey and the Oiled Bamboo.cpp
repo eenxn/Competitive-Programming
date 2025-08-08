@@ -7,7 +7,7 @@ vector<int> a;
 
 bool check(int k)
 {
-    for (int i=0; i<a.size()-1; i++)
+    for (int i=0; i<(int)a.size()-1; i++)
     {
         int d = a[i+1] - a[i];
 
