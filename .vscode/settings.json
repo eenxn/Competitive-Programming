@@ -1,7 +1,8 @@
 {
   "files.associations": {
     "iostream": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "c1_bkk64_4.C": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
