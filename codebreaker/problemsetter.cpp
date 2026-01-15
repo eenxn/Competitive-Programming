@@ -17,15 +17,13 @@ int32_t main()
     for(int i=0; i<p; i++) cin>>problem[i].first>>problem[i].second;
     
     sort(contest.begin(), contest.end());
-    
-    vector<int> pref;
-    int temp = contest[0].second;
-    pref.push_back(contest[0].second);
 
-    for(int i=1; i<c; i++)
+    vector<int> pfmax(c);
+
+    pfmax[0] = contest[0].second;
+    for(int i=1; i<c;i++)
     {
-        temp += contest[i].second;
-        pref.push_back(temp);
+        pfmax[i] = max(pfmax[i-1], contest[i].second);
     }
 
     for(int i =0; i<p; i++)
@@ -34,12 +32,9 @@ int32_t main()
         auto it = upper_bound(contest.begin(), contest.end(), make_pair(problem[i].first, INF));
         int index = it- contest.begin()-1; //debug(index)
 
-        auto it2 = upper_bound(pref.begin(), pref.begin()+index, contest[index].second); //debug(contest[index].second);
-        int idx = it2-pref.begin(); //debug(idx)
+        if (index <0) continue;
 
-        int cursat= contest[idx].second-problem[i].second;//debug(cursat)
-        if(cursat>=0) sat += (cursat); 
-        //debug(sat)
+        sat+= max(pfmax[index]-problem[i].second, 0LL);
     }
 
     cout << sat << '\n';
