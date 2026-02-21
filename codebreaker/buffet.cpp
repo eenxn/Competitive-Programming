@@ -20,9 +20,16 @@ int32_t main()
         cin>>t2[i];
     }
 
-    
-    // no if else in dp
+    dp1[0] = t1[0];
+    dp2[0] = t2[0];
 
+    for(int i=1; i<n; i++)
+    {
+        dp1[i] = max(dp1[i-1] + t1[i], dp2[i-1]-k + t1[i]);
+        dp2[i] = max(dp2[i-1] + t2[i], dp1[i-1]-k + t2[i]);
+    }
+
+    cout << max(dp1[n-1], dp2[n-1]) << '\n';
 
     return (0);
 }
