@@ -14,7 +14,8 @@ int32_t main()
         cin>>h[i];
     }
 
-    for(int i=2; i<=n; i++)
+    dp[2] = abs(h[2]-h[1]);
+    for(int i=3; i<=n; i++)
     {
         dp[i] = min(dp[i-1]+abs(h[i-1]-h[i]), dp[i-2]+abs(h[i-2]-h[i]));
     }
