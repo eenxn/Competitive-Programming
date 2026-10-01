@@ -2,3 +2,4 @@ output/
 output/*
 a.out
 .cph
+.bin
